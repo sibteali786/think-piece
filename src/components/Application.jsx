@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {firestore} from "../firebase";
 import Posts from './Posts';
 
 class Application extends Component {
