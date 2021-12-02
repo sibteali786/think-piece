@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { firestore } from "../firebase";
 class AddPost extends Component {
   state = { title: '', content: '' };
 
@@ -11,17 +11,16 @@ class AddPost extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { onCreate } = this.props;
+    
     const { title, content } = this.state;
 
     const post = {
-      id: Date.now().toString(),
       title,
       content,
       user: {
         uid: '1111',
-        displayName: 'Steve Kinney',
-        email: 'steve@mailinator.com',
+        displayName: 'Sibteali Baqar',
+        email: 'sibteali786@gmail.com',
         photoURL: 'http://placekitten.com/g/200/200',
       },
       favorites: 0,
@@ -29,7 +28,8 @@ class AddPost extends Component {
       createdAt: new Date(),
     }
 
-    onCreate(post);
+    firestore.collection('posts').doc(post.id).set(post)
+  
 
     this.setState({ title: '', content: '' });
   };
