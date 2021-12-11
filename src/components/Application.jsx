@@ -7,7 +7,7 @@ import Authentication from "./Authentication";
 class Application extends Component {
   state = {
     posts: [],
-    user:null,
+    User:null,
   };
 
 unsubscribeFromFireStore = null;
@@ -19,25 +19,26 @@ componentDidMount = async ()=>{
     this.setState({posts});
   })
 
-  this.unsubscribeFromAuth = auth.onAuthStateChanged(user=>{
-    this.setState({user});
-    console.log(user);
+  this.unsubscribeFromAuth = auth.onAuthStateChanged((user)=>{
+    const User = user.multiFactor.user;
+    this.setState({User});
   });
 }
 
 componentWillUnmount=()=>{
   this.unsubscribeFromFireStore();
+  this.unsubscribeFromAuth();
 }
 
   
 
   render() {
-    const { posts ,user} = this.state;
+    const { posts ,User} = this.state;
 
     return (
       <main className="Application">
         <h1>Think Piece</h1>
-        <Authentication user={user} />
+        <Authentication User={User} />
         <Posts posts={posts}   />
       </main>
     );
