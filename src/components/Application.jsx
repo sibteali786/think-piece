@@ -20,8 +20,13 @@ componentDidMount = async ()=>{
   })
 
   this.unsubscribeFromAuth = auth.onAuthStateChanged((user)=>{
-    const User = user.multiFactor.user;
-    this.setState({User});
+    if (user){
+      const User = user.multiFactor.user;
+      this.setState({User});
+    }else{
+      const User = user;
+      this.setState({User});
+    }
   });
 }
 
