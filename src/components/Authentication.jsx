@@ -3,10 +3,9 @@ import React from 'react';
 import CurrentUser from './CurrentUser';
 import SignInAndSignUp from './SignInAndSignUp';
 
-const Authentication = ({ User, loading }) => {
-  if (loading) return null
-  return <div>{User ? <CurrentUser {...User} /> : <SignInAndSignUp />}</div>;
+const Authentication = ({ user, loading }) => {
+  if (loading | !user) return null;
+  return <div>{user ? <CurrentUser {...user} /> : <SignInAndSignUp />}</div>;
 };
 
 export default Authentication;
-  
