@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {firestore, auth} from "../firebase";
+import {firestore, auth, createUserProfileDocument} from "../firebase";
 import { collectIdsandDocs } from '../utilities';
 import Posts from './Posts';
 import Authentication from "./Authentication";
@@ -19,8 +19,10 @@ componentDidMount = async ()=>{
     this.setState({posts});
   })
 
-  this.unsubscribeFromAuth = auth.onAuthStateChanged((user)=>{
-    if (user){
+  this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth)=>{
+    if (userAuth){
+      const user = await createUserProfileDocument(userAuth);
+      console.log(user);
       this.setState({user});
     }else{
       this.setState({});

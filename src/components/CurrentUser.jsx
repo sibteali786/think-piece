@@ -3,20 +3,19 @@ import React from 'react';
 import moment from 'moment';
 import { signOut } from '../firebase';
 
-const CurrentUser = ({ multiFactor }) => {
-  const user = multiFactor.user;
+const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
   return (
     <section className="CurrentUser">
       <div className="CurrentUser--profile">
-        {user.photoURL && <img src={user.photoURL} alt={user.displayName} />}
+        {photoURL && <img src={photoURL} alt={displayName} />}
         <div className="CurrentUser--information">
-          <h2>{user.displayName}</h2>
-          <p className="email">{user.email}</p>
-          <p className="created-at">{moment(user.createdAt).calendar()}</p>
+          <h2>{displayName}</h2>
+          <p className="email">{email}</p>
+          <p className="created-at">{moment(createdAt).calendar()}</p>
         </div>
       </div>
       <div>
-        <div>{user.children}</div>
+        <div>{children}</div>
         <button onClick={signOut}>Sign Out</button>
       </div>
     </section>

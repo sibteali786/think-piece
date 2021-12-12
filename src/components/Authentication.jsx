@@ -4,7 +4,7 @@ import CurrentUser from './CurrentUser';
 import SignInAndSignUp from './SignInAndSignUp';
 
 const Authentication = ({ user, loading }) => {
-  if (loading | !user) return null;
+  if (loading) return null;
   return <div>{user ? <CurrentUser {...user} /> : <SignInAndSignUp />}</div>;
 };
 
