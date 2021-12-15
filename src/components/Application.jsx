@@ -33,7 +33,7 @@ componentWillUnmount=()=>{
       
       <main className="Application">
         <h1>Think Piece</h1>
-        <Authentication user={this.state.user} />
+        <Authentication />
         <Posts   />
       </main>
     );

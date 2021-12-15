@@ -5,7 +5,11 @@ import './index.scss';
 
 import Application from './components/Application';
 import PostsProvider from './providers/PostProvider';
+import UserProvider from './providers/UserProvider';
 
-render(<PostsProvider>
+render(
+<UserProvider>
+<PostsProvider>
     <Application />
-    </PostsProvider>, document.getElementById('root'));
+    </PostsProvider>
+    </UserProvider>, document.getElementById('root'));
