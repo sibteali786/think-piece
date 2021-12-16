@@ -6,10 +6,12 @@ import './index.scss';
 import Application from './components/Application';
 import PostsProvider from './providers/PostProvider';
 import UserProvider from './providers/UserProvider';
-
+import {BrowserRouter as Router} from "react-router-dom";
 render(
+    <Router>
 <UserProvider>
 <PostsProvider>
     <Application />
     </PostsProvider>
-    </UserProvider>, document.getElementById('root'));
+    </UserProvider>
+    </Router>, document.getElementById('root'));

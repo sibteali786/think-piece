@@ -5,6 +5,7 @@ import { PostsContext } from '../providers/PostProvider';
 
 const Posts = () => {
   const posts = useContext(PostsContext);
+  console.log(posts);
   return (
     <section className="Posts">
       <AddPost  />

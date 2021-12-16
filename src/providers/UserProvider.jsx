@@ -16,7 +16,6 @@ componentDidMount = async ()=>{
     }
   });
 }
-
     componentWillUnmount = ()=> {
         this.unsubscribeFromAuth();
     }
@@ -29,6 +28,5 @@ componentDidMount = async ()=>{
         );
     }
 }
-
 
 export default UserProvider;
