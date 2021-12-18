@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react'
-import { auth, createUserProfileDocument} from '../firebase';
+import { auth, createUserProfileDocument, firestore} from '../firebase';
 
 export const UserContext = createContext();
 class UserProvider extends Component {
@@ -8,9 +8,12 @@ class UserProvider extends Component {
 componentDidMount = async ()=>{
   this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth)=>{
     if (userAuth){
-      const user = await createUserProfileDocument(userAuth);
-      console.log(user);
-      this.setState({user});
+      const userRef = await createUserProfileDocument(userAuth);
+      userRef.onSnapshot(snapshot=>{
+        this.setState({user:{uid:snapshot.id,...snapshot.data()}});
+        console.log({...snapshot.data()});
+      })
+      this.setState({user:userAuth});
     }else{
       this.setState({});
     }

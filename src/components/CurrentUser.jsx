@@ -3,18 +3,19 @@ import React from 'react';
 import moment from 'moment';
 import { signOut } from '../firebase';
 import { Link} from "react-router-dom";
-const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
+const CurrentUser = ({ user, children }) => {
+  console.log(user);
   return (
     <section className="CurrentUser">
       <div className="CurrentUser--profile">
-        {photoURL && <img src={photoURL} alt={displayName} />}
+        {user.photoURL && <img src={user.photoURL} alt={user.displayName} />}
         <div className="CurrentUser--information">
           <Link to="profile">
           
-          <h2>{displayName}</h2>
+          <h2>{user.displayName}</h2>
           </Link>
-          <p className="email">{email}</p>
-          <p className="created-at">{moment(createdAt).calendar()}</p>
+          <p className="email">{user.email}</p>
+          <p className="created-at">{moment(user.createdAt).calendar()}</p>
         </div>
       </div>
       <div>
