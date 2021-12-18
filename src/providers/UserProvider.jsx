@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react'
-import { auth, createUserProfileDocument, firestore} from '../firebase';
+import { auth, createUserProfileDocument} from '../firebase';
 
 export const UserContext = createContext();
 class UserProvider extends Component {
@@ -11,7 +11,6 @@ componentDidMount = async ()=>{
       const userRef = await createUserProfileDocument(userAuth);
       userRef.onSnapshot(snapshot=>{
         this.setState({user:{uid:snapshot.id,...snapshot.data()}});
-        console.log({...snapshot.data()});
       })
       this.setState({user:userAuth});
     }else{

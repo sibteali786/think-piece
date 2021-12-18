@@ -4,7 +4,6 @@ import moment from 'moment';
 import { signOut } from '../firebase';
 import { Link} from "react-router-dom";
 const CurrentUser = ({ user, children }) => {
-  console.log(user);
   return (
     <section className="CurrentUser">
       <div className="CurrentUser--profile">
