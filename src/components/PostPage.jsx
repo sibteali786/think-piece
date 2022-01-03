@@ -5,6 +5,7 @@ import { collectIdsandDocs } from '../utilities';
 
 import Comments from "./Comments";
 import Post from './Post';
+import withUser from './withUser';
 
 
 class PostPage extends Component {
@@ -42,8 +43,10 @@ class PostPage extends Component {
         this.unsubscribeFromComments();
     }
     createComment = (comment) =>{
+        const  {user} = this.props;
         this.commentsRef.add({
-            ...comment
+            ...comment,
+            user
         })
     }   
     
@@ -60,4 +63,4 @@ class PostPage extends Component {
 }
 
 
-export default withRouter(PostPage);
+export default withRouter(withUser(PostPage));
