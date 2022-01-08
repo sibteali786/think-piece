@@ -31,10 +31,12 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "rewrites": [ {
-    "source": "**",
-    "destination": "/index.html"
-  } ],
+  "rewrites": [
+    {
+      "source": "**",
+      "destination": "/index.html"
+    }
+  ],
   "devDependencies": {
     "node-sass": "^4.11.0"
   }
